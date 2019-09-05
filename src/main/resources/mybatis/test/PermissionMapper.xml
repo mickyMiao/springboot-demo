@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.msn.springbootdemo.dao.PermissionMapper" >
+
+  <!-- 增加-->
+  <insert id="addPermission" parameterType="com.msn.springbootdemo.domain.Permission" >
+    insert into permission (id, permission,role_id
+      )
+    values (#{id,jdbcType=INTEGER}, #{ permission,jdbcType=VARCHAR} ,#{role_id,jdbcType=INTEGER}
+      )
+  </insert>
+  <!--
+  删除
+  -->
+  <delete id="delPermission" parameterType="java.lang.Integer" >
+    delete from permission
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <!--修改-->
+  <update id="updPermission" parameterType="com.msn.springbootdemo.domain.Permission" >
+    update permission
+
+    set permission=#{permission,jdbcType=VARCHAR},role_id=#{role_id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="getPermission" parameterType="java.lang.Integer" resultType="com.msn.springbootdemo.domain.Permission">
+    select * from  permission
+   where id = #{id,jdbcType=INTEGER}
+  </select>
+
+</mapper>
